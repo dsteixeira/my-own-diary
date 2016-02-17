@@ -7,17 +7,17 @@ public class DiaryEntry implements Serializable {
 
 	private static final long serialVersionUID = 82077455483358576L;
 
-	private Integer id;
+	private Long id;
 	private String title;
-	private String body;
+	private String post;
 	private Date createDate;
 	private Date entryDate;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -29,12 +29,12 @@ public class DiaryEntry implements Serializable {
 		this.title = title;
 	}
 
-	public String getBody() {
-		return body;
+	public String getPost() {
+		return post;
 	}
 
-	public void setBody(String body) {
-		this.body = body;
+	public void setPost(String post) {
+		this.post = post;
 	}
 
 	public Date getCreateDate() {
