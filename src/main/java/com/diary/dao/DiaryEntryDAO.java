@@ -5,7 +5,7 @@ import java.util.List;
 import com.diary.model.DiaryEntry;
 
 public interface DiaryEntryDAO {
-	DiaryEntry findById(Integer id);
+	DiaryEntry findById(Long id);
 
 	List<DiaryEntry> findAll();
 
@@ -13,5 +13,5 @@ public interface DiaryEntryDAO {
 
 	void update(DiaryEntry diaryEntry);
 
-	void delete(Integer id);
+	void delete(Long id);
 }

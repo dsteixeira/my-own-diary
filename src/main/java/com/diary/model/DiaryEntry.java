@@ -11,7 +11,7 @@ public class DiaryEntry implements Serializable {
 	private String title;
 	private String post;
 	private Date createDate;
-	private Date entryDate;
+	private Date updateDate;
 
 	public Long getId() {
 		return id;
@@ -45,11 +45,11 @@ public class DiaryEntry implements Serializable {
 		this.createDate = createDate;
 	}
 
-	public Date getEntryDate() {
-		return entryDate;
+	public Date getUpdateDate() {
+		return updateDate;
 	}
 
-	public void setEntryDate(Date entryDate) {
-		this.entryDate = entryDate;
+	public void setUpdateDate(Date updateDate) {
+		this.updateDate = updateDate;
 	}
 }
