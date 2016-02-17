@@ -7,9 +7,10 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
 <link type="text/css" rel="stylesheet"
-	href="<c:url value='/resources/css/bootstrap.css' />" type="text/css" />
-
-<style type="text/css">
+	href="<c:url value='/resources/css/bootstrap.css' />" />
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.datatables.net/t/dt/dt-1.10.11/datatables.min.css" />
+<style type="text/css" rel="stylesheet">
 body {
 	padding-left: 10px;
 	padding-right: 10px;
@@ -17,35 +18,74 @@ body {
 }
 </style>
 
-<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
+<script src="<c:url value='/resources/js/jquery-2.2.0.min.js' />"></script>
 <script src="<c:url value='/resources/js/bootstrap.js' />"></script>
+<script type="text/javascript"
+	src="https://cdn.datatables.net/t/dt/dt-1.10.11/datatables.min.js"></script>
+
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('#postEntries').DataTable();
+	});
+
+	$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});
+</script>
+
 <title>My Own Diary</title>
 </head>
 <body>
-	<div class="page-header" align="center">
-		<img src="<c:url value='/resources/img/mindstorms.jpg' />" />
-	</div>
-	<a href="<c:url value='/newEntry'/>" class="btn btn-primary btn-md">New Entry</a>
-	<br />
-	<br />
-	<div class="panel panel-default" align="center">
-		<div class="panel-heading">Diary Entries</div>
-		<table class="table">
+	<div class="container">
+		<div class="jumbotron">
+			<h1>My Own Diary</h1>
+			<p>Simple application to show IBM Bluemix and IBM Watson features</p>
+		</div>
+
+		<a href="<c:url value='/newEntry'/>" class="btn btn-primary btn-md">New
+			Entry</a> <br /> <br />
+		<table id="postEntries" class="table table-striped table-bordered"
+			cellspacing="1" width="100%">
 			<thead>
 				<tr>
-					<th>ID</th>
 					<th>Title</th>
-					<th>Text</th>
+					<th>Post</th>
 					<th>Post Date</th>
+					<th>Last Update</th>
+					<th>Actions</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:forEach items="${entries}" var="entry">
 					<tr>
-						<td>${entry.id}</td>
 						<td>${entry.title}</td>
-						<td>${entry.body}</td>
-						<td>${entry.entryDate}</td>
+						<td>
+							<!-- Get just first 25 characters from original post --> <c:set
+								var="originalPost" value="${entry.post}" /> <c:set
+								var="minimalPost" value="${fn:substring(originalPost, 0, 25)}" />
+							${minimalPost} ...
+						</td>
+						<td><fmt:formatDate value="${entry.createDate}"
+								pattern="dd/MM/yyyy HH:mm:ss" /></td>
+						<td><fmt:formatDate value="${entry.updateDate}"
+								pattern="dd/MM/yyyy HH:mm:ss" /></td>
+						<td>
+							<a href="<c:url value='/viewEntry'/>/${entry.id}" data-toggle="tooltip" data-placement="top" title="View entry">
+								<button type="button" class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-zoom-in"></span>
+								</button>
+							</a>
+							<a href="<c:url value='/prepareEditEntry'/>/${entry.id}" data-toggle="tooltip" data-placement="top" title="Edit entry">
+								<button type="button" class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-edit"></span>
+								</button>
+							</a>
+							<a href="<c:url value='/deleteEntry'/>/${entry.id}" data-toggle="tooltip" data-placement="top" title="Delete entry">
+								<button type="button" class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-trash"></span>
+								</button>
+							</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>

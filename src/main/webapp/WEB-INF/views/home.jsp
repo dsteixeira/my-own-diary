@@ -17,7 +17,7 @@ body {
 	}
 </style>
 
-<script src="<c:url value='/resources/js/jquery.min.js' />"></script>
+<script src="<c:url value='/resources/js/jquery-2.2.0.min.js' />"></script>
 <script src="<c:url value='/resources/js/bootstrap.js' />"></script>
 <title>My Own Diary</title>
 </head>
