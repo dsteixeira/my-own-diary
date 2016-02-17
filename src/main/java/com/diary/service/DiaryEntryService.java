@@ -13,8 +13,24 @@ public class DiaryEntryService {
 
 	@Autowired
 	DiaryEntryDAO diaryEntryDAO;
-	
+
 	public List<DiaryEntry> listAll() {
 		return diaryEntryDAO.findAll();
+	}
+
+	public void save(DiaryEntry diaryEntry) {
+		diaryEntryDAO.save(diaryEntry);
+	}
+
+	public void delete(Long id) {
+		diaryEntryDAO.delete(id);
+	}
+
+	public DiaryEntry findById(Long id) {
+		return diaryEntryDAO.findById(id);
+	}
+
+	public void update(DiaryEntry diaryEntry) {
+		diaryEntryDAO.update(diaryEntry);
 	}
 }
