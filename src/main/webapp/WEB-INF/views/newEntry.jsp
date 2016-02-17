@@ -34,7 +34,7 @@ body {
 					<label for="inputTitle" class="control-label col-xs-1">Title</label>
 					<div class="col-xs-5">
 						<input type="text" class="form-control" id="title" name="title"
-							placeholder="What's up?">
+							placeholder="What's up?"/>
 					</div>
 				</div>
 				<div class="form-group">
