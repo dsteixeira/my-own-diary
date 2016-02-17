@@ -21,4 +21,12 @@
 		<property name="prefix" value="/WEB-INF/views/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+            <property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver"/>
+            <property name="url" value="jdbc:db2://75.126.155.153:50000/SQLDB"/>
+            <property name="username" value="user14770"/>
+            <property name="password" value="qJd5ESFulgqm"/>
+        </bean>
+	
 </beans>

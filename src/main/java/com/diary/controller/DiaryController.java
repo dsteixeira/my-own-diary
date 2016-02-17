@@ -39,7 +39,7 @@ public class DiaryController {
 	
 	@RequestMapping(value = "saveEntry", method = RequestMethod.POST)
 	public String saveEntry(DiaryEntry diaryEntry) {
-		System.out.println(diaryEntry.getBody());
+		System.out.println(diaryEntry.getPost());
 		System.out.println(diaryEntry.getTitle());
 		
 		return "redirect:/list";

@@ -38,7 +38,7 @@ body {
         <div class="form-group">
             <label for="inputPost" class="control-label col-xs-1">Post</label>
             <div class="col-xs-10">
-                <textarea class="form-control" rows="5" id="post" name="body" placeholder="How are you today?"></textarea>
+                <textarea class="form-control" rows="5" id="post" name="post" placeholder="How are you today?"></textarea>
             </div>
         </div>
 		<div class="form-group">
