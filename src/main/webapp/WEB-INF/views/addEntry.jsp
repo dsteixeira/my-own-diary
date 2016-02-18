@@ -29,19 +29,17 @@ body {
 		<div class="panel panel-default" align="center">
 			<div class="panel-heading">New Diary Entry</div>
 			<br />
-			<form:form class="form-horizontal" action="saveEntry">
+			<form:form class="form-horizontal" action="saveEntry" commandName="entryForm">
 				<div class="form-group">
 					<label for="inputTitle" class="control-label col-xs-1">Title</label>
 					<div class="col-xs-5">
-						<input type="text" class="form-control" id="title" name="title"
-							placeholder="What's up?"/>
+						<input type="text" class="form-control" id="title" name="title"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPost" class="control-label col-xs-1">Post</label>
 					<div class="col-xs-10">
-						<textarea class="form-control" rows="8" id="post" name="post"
-							placeholder="How are you today?"></textarea>
+						<textarea class="form-control" rows="8" id="post" name="post"></textarea>
 					</div>
 				</div>
 				<div class="form-group">

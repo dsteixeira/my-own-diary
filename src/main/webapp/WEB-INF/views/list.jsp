@@ -44,6 +44,16 @@ body {
 
 		<a href="<c:url value='/addEntry'/>" class="btn btn-primary btn-md">Add Entry</a>
 		<br /> <br />
+		<!-- Some info message -->
+		<c:choose>
+			<c:when test="${!empty successMessage}">
+				<div class="alert alert-success fade in" align="center">
+					<button type="button" class="close" data-dismiss="alert">&times;</button>
+					<c:out value="${successMessage}" />
+				</div>
+			</c:when>
+		</c:choose>
+
 		<table id="postEntries" class="table table-striped table-bordered"
 			cellspacing="1" width="100%">
 			<thead>
@@ -69,23 +79,22 @@ body {
 								pattern="dd/MM/yyyy HH:mm:ss" /></td>
 						<td><fmt:formatDate value="${entry.updateDate}"
 								pattern="dd/MM/yyyy HH:mm:ss" /></td>
-						<td>
-							<a href="<c:url value='/viewEntry'/>/${entry.id}" data-toggle="tooltip" data-placement="top" title="View entry">
+						<td><a href="<c:url value='/viewEntry'/>/${entry.id}"
+							data-toggle="tooltip" data-placement="top" title="View entry">
 								<button type="button" class="btn btn-default btn-sm">
 									<span class="glyphicon glyphicon-zoom-in"></span>
 								</button>
-							</a>
-							<a href="<c:url value='/prepareEditEntry'/>/${entry.id}" data-toggle="tooltip" data-placement="top" title="Edit entry">
+						</a> <a href="<c:url value='/prepareEditEntry'/>/${entry.id}"
+							data-toggle="tooltip" data-placement="top" title="Edit entry">
 								<button type="button" class="btn btn-default btn-sm">
 									<span class="glyphicon glyphicon-edit"></span>
 								</button>
-							</a>
-							<a href="<c:url value='/deleteEntry'/>/${entry.id}" data-toggle="tooltip" data-placement="top" title="Delete entry">
+						</a> <a href="<c:url value='/deleteEntry'/>/${entry.id}"
+							data-toggle="tooltip" data-placement="top" title="Delete entry">
 								<button type="button" class="btn btn-default btn-sm">
 									<span class="glyphicon glyphicon-trash"></span>
 								</button>
-							</a>
-						</td>
+						</a></td>
 					</tr>
 				</c:forEach>
 			</tbody>
