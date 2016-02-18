@@ -33,9 +33,9 @@ public class DiaryController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "newEntry", method = RequestMethod.GET)
-	public ModelAndView newEntry() {
-		ModelAndView mv = new ModelAndView("newEntry");
+	@RequestMapping(value = "addEntry", method = RequestMethod.GET)
+	public ModelAndView addEntry() {
+		ModelAndView mv = new ModelAndView("addEntry");
 		return mv;
 	}
 	
