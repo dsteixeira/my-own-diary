@@ -90,47 +90,47 @@ body {
 			<p>Simple application to show IBM Bluemix and IBM Watson features</p>
 		</div>
 		<div class="panel panel-default">
-			<div class="panel-heading" align="center">View Diary Entry</div>
+			<div class="panel-heading">View Diary Entry</div>
 			<div class="row">
-				<label class="col-sm-2">ID</label>
-				<div class="col-sm-10">${entry.id}</div>
+				<label class="col-md-2">ID</label>
+				<div class="col-md-10">${entry.id}</div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Post Creation Date</label>
-				<div class="col-sm-10">
+				<label class="col-md-2">Post Creation Date</label>
+				<div class="col-md-10">
 					<fmt:formatDate value="${entry.createDate}"
 						pattern="dd/MM/yyyy HH:mm:ss" />
 				</div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Last Post Update</label>
-				<div class="col-sm-10">
+				<label class="col-md-2">Last Post Update</label>
+				<div class="col-md-10">
 					<fmt:formatDate value="${entry.updateDate}"
 						pattern="dd/MM/yyyy HH:mm:ss" />
 				</div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Title</label>
-				<div class="col-sm-10">${entry.title}</div>
+				<label class="col-md-2">Title</label>
+				<div class="col-md-10">${entry.title}</div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Post</label>
-				<div class="col-sm-10">${entry.post}</div>
+				<label class="col-md-2">Post</label>
+				<div class="col-md-9">${entry.post}</div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Emotional Analysis</label>
-				<div id="chart_div1" class="col-sm-10" align="center"></div>
+				<label class="col-md-2">Emotional Analysis</label>
+				<div id="chart_div1" class="col-md-10" align="center"></div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Writing Style</label>
-				<div id="chart_div2" class="col-sm-10" align="center"></div>
+				<label class="col-md-2">Writing Style</label>
+				<div id="chart_div2" class="col-md-10" align="center"></div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Social Analysis</label>
-				<div id="chart_div3" class="col-sm-10" align="center"></div>
+				<label class="col-md-2">Social Analysis</label>
+				<div id="chart_div3" class="col-md-10" align="center"></div>
 			</div>
 			<div class="row">
-				<div class="col-sm-12" align="center">
+				<div class="col-md-12" align="center">
 					<a href="<c:url value='/list'/>">
 						<button type="button" class="btn btn-danger btn-md">Back to List</button>
 					</a>

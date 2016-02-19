@@ -3,14 +3,25 @@ package com.diary.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class DiaryEntry implements Serializable {
 
 	private static final long serialVersionUID = 82077455483358576L;
 
 	private Long id;
 
+	@NotNull(message = "Title is mandatory")
+	@NotEmpty(message = "Title is mandatory")
+	@Size(max = 50, message = "Max size is 50")
 	private String title;
 
+	@NotNull(message = "Post is mandatory")
+	@NotEmpty(message = "Post is mandatory")
+	@Size(max = 2000, message = "Max size is 2000")
 	private String post;
 
 	private Date createDate;
