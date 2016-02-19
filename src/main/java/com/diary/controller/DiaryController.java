@@ -3,9 +3,12 @@ package com.diary.controller;
 import java.util.Date;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -51,12 +54,20 @@ public class DiaryController {
 	}
 
 	@RequestMapping(value = "addEntry")
-	public String addEntry() {
+	public String addEntry(Model model) {
+		if (!model.containsAttribute("diaryEntry")) {
+			model.addAttribute("diaryEntry", new DiaryEntry());
+		}
 		return "addEntry";
 	}
 
 	@RequestMapping(value = "saveEntry", method = RequestMethod.POST)
-	public String saveEntry(DiaryEntry diaryEntry, RedirectAttributes redirectAttributes) {
+	public String saveEntry(@Valid DiaryEntry diaryEntry, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+
+		if (result.hasErrors()) {
+			return "addEntry";
+		}
+
 		Date createDate = new Date();
 		diaryEntry.setCreateDate(createDate);
 		diaryEntry.setUpdateDate(createDate);
@@ -68,20 +79,28 @@ public class DiaryController {
 
 	@RequestMapping(value = "/prepareEditEntry/{id}")
 	public String prepareEditEntry(@PathVariable("id") Long id, Model model) {
-		DiaryEntry diaryEntry = diaryEntryService.findById(id);
-		model.addAttribute("entry", diaryEntry);
+		if (!model.containsAttribute("diaryEntry")) {
+			DiaryEntry diaryEntry = diaryEntryService.findById(id);
+			model.addAttribute("diaryEntry", diaryEntry);
+		}
 		return "editEntry";
 	}
-	
+
 	@RequestMapping(value = "updateEntry", method = RequestMethod.POST)
-	public String updateEntry(DiaryEntry diaryEntry, RedirectAttributes redirectAttributes) {
+	public String updateEntry(@Valid DiaryEntry diaryEntry, BindingResult result, Model model, RedirectAttributes redirectAttributes) {
+		
+		if (result.hasErrors()) {
+			model.addAttribute("diaryEntry", diaryEntry);
+			return "addEntry";
+		}
+		
 		diaryEntry.setUpdateDate(new Date());
 		diaryEntryService.update(diaryEntry);
 
 		redirectAttributes.addFlashAttribute("successMessage", "Diary entry successfuly updated.");
 		return "redirect:/list";
 	}
-	
+
 	@RequestMapping(value = "deleteEntry/{id}", method = RequestMethod.GET)
 	public String deleteEntry(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 		diaryEntryService.delete(id);
