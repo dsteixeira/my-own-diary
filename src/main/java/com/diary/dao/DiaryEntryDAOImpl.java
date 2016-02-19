@@ -20,6 +20,9 @@ import com.diary.model.DiaryEntry;
 @Repository
 public class DiaryEntryDAOImpl implements DiaryEntryDAO {
 
+	private static final String ACTION_INSERT = "insert";
+	private static final String ACTION_UPDATE = "update";
+	
 	@Autowired
 	NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -27,7 +30,7 @@ public class DiaryEntryDAOImpl implements DiaryEntryDAO {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("id", id);
 
-		String sql = "SELECT id, title, post, create_date, last_update_date FROM diary WHERE id=:id";
+		String sql = "SELECT id, title, post, create_date, last_update_date FROM diary WHERE id = :id";
 
 		DiaryEntry diaryEntry = null;
 		try {
@@ -51,10 +54,15 @@ public class DiaryEntryDAOImpl implements DiaryEntryDAO {
 	public void save(DiaryEntry diaryEntry) {
 		String sql = "INSERT INTO diary (title, post, create_date, last_update_date) " +
 		" VALUES (:title, :post, :create_date, :last_update_date)";
-		namedParameterJdbcTemplate.update(sql, getSqlParameterByModel(diaryEntry));
+		namedParameterJdbcTemplate.update(sql, getSqlParameterByModel(diaryEntry, ACTION_INSERT));
 	}
 
 	public void update(DiaryEntry diaryEntry) {
+		String sql = "UPDATE diary "
+				+ " SET title = :title, post = :post, last_update_date = :last_update_date "
+				+ " WHERE id = :id";
+
+			namedParameterJdbcTemplate.update(sql, getSqlParameterByModel(diaryEntry, ACTION_UPDATE));
 	}
 
 	public void delete(Long id) {
@@ -76,13 +84,17 @@ public class DiaryEntryDAOImpl implements DiaryEntryDAO {
 		}
 	}
 
-	private SqlParameterSource getSqlParameterByModel(DiaryEntry diaryEntry) {
+	private SqlParameterSource getSqlParameterByModel(DiaryEntry diaryEntry, String action) {
 
 		MapSqlParameterSource paramSource = new MapSqlParameterSource();
 		paramSource.addValue("id", diaryEntry.getId());
 		paramSource.addValue("post", diaryEntry.getPost());
 		paramSource.addValue("title", diaryEntry.getTitle());
-		paramSource.addValue("create_date", new java.sql.Timestamp(diaryEntry.getCreateDate().getTime()));
+		
+		if (ACTION_INSERT.endsWith(action)) {
+			paramSource.addValue("create_date", new java.sql.Timestamp(diaryEntry.getCreateDate().getTime()));
+		}
+		
 		paramSource.addValue("last_update_date", new java.sql.Timestamp(diaryEntry.getUpdateDate().getTime()));
 
 		return paramSource;

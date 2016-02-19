@@ -1,4 +1,4 @@
-<%@ include file="includes/taglibs.jsp" %>
+<%@ include file="includes/taglibs.jsp"%>
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -27,19 +27,20 @@ body {
 			<p>Simple application to show IBM Bluemix and IBM Watson features</p>
 		</div>
 		<div class="panel panel-default" align="center">
-			<div class="panel-heading">New Diary Entry</div>
+			<div class="panel-heading">Edit Diary Entry</div>
 			<br />
-			<form:form class="form-horizontal" action="saveEntry" commandName="entryForm">
+			<form:form class="form-horizontal" action="/MyOwnDiary/updateEntry">
+				<input type="hidden" name="id" value="${entry.id}"/>
 				<div class="form-group">
 					<label for="inputTitle" class="control-label col-xs-1">Title</label>
 					<div class="col-xs-5">
-						<input type="text" class="form-control" id="title" name="title"/>
+						<input type="text" class="form-control" id="title" name="title" value="${entry.title}"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPost" class="control-label col-xs-1">Post</label>
 					<div class="col-xs-10">
-						<textarea class="form-control" rows="8" id="post" name="post"></textarea>
+						<textarea class="form-control" rows="8" id="post" name="post">${entry.post}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
