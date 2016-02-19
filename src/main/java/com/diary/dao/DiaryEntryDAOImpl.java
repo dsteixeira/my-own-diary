@@ -39,7 +39,7 @@ public class DiaryEntryDAOImpl implements DiaryEntryDAO {
 	}
 
 	public List<DiaryEntry> findAll() {
-		String sql = "SELECT id, title, post, create_date, last_update_date FROM diary ORDER BY id";
+		String sql = "SELECT id, title, post, create_date, last_update_date FROM diary ORDER BY create_date DESC";
 		List<DiaryEntry> result = namedParameterJdbcTemplate.query(sql, new DiaryEntryMapper());
 
 		if (result == null) {
