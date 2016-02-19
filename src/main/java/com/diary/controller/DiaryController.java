@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -65,6 +66,22 @@ public class DiaryController {
 		return "redirect:/list";
 	}
 
+	@RequestMapping(value = "/prepareEditEntry/{id}")
+	public String prepareEditEntry(@PathVariable("id") Long id, Model model) {
+		DiaryEntry diaryEntry = diaryEntryService.findById(id);
+		model.addAttribute("entry", diaryEntry);
+		return "editEntry";
+	}
+	
+	@RequestMapping(value = "updateEntry", method = RequestMethod.POST)
+	public String updateEntry(DiaryEntry diaryEntry, RedirectAttributes redirectAttributes) {
+		diaryEntry.setUpdateDate(new Date());
+		diaryEntryService.update(diaryEntry);
+
+		redirectAttributes.addFlashAttribute("successMessage", "Diary entry successfuly updated.");
+		return "redirect:/list";
+	}
+	
 	@RequestMapping(value = "deleteEntry/{id}", method = RequestMethod.GET)
 	public String deleteEntry(@PathVariable("id") Long id, RedirectAttributes redirectAttributes) {
 		diaryEntryService.delete(id);

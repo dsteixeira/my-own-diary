@@ -96,7 +96,7 @@ body {
 				<div class="col-sm-10">${entry.id}</div>
 			</div>
 			<div class="row">
-				<label class="col-sm-2">Post</label>
+				<label class="col-sm-2">Post Creation Date</label>
 				<div class="col-sm-10">
 					<fmt:formatDate value="${entry.createDate}"
 						pattern="dd/MM/yyyy HH:mm:ss" />
