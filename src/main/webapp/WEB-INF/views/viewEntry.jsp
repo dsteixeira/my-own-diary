@@ -131,12 +131,12 @@ body {
 			</div>
 			<div class="row">
 				<div class="col-sm-12" align="center">
-					<br /> <a href="<c:url value='/list'/>">
-						<button type="button" class="btn btn-danger btn-md">Back
-							to List</button>
-					</a> <br /> <br />
+					<a href="<c:url value='/list'/>">
+						<button type="button" class="btn btn-danger btn-md">Back to List</button>
+					</a>
 				</div>
 			</div>
+			<p/>
 		</div>
 	</div>
 </body>
