@@ -1,4 +1,4 @@
-<%@ include file="includes/taglibs.jsp"%>
+<%@ include file="includes/taglibs.jsp" %>
 <?xml version="1.0" encoding="ISO-8859-1" ?>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
@@ -29,7 +29,8 @@ body {
 		<div class="panel panel-default" align="center">
 			<div class="panel-heading">Edit Diary Entry</div>
 			<br />
-			<form:form class="form-horizontal" action="/MyOwnDiary/updateEntry">
+			<c:url var="post_url" value="/updateEntry" />
+			<form:form class="form-horizontal" action="${post_url}" >
 				<input type="hidden" name="id" value="${entry.id}"/>
 				<div class="form-group">
 					<label for="inputTitle" class="control-label col-xs-1">Title</label>
