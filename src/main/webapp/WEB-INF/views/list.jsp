@@ -79,22 +79,23 @@ body {
 								pattern="dd/MM/yyyy HH:mm:ss" /></td>
 						<td><fmt:formatDate value="${entry.updateDate}"
 								pattern="dd/MM/yyyy HH:mm:ss" /></td>
-						<td><a href="<c:url value='/viewEntry'/>/${entry.id}"
-							data-toggle="tooltip" data-placement="top" title="View entry">
-								<button type="button" class="btn btn-default btn-sm">
-									<span class="glyphicon glyphicon-zoom-in"></span>
-								</button>
-						</a> <a href="<c:url value='/prepareEditEntry'/>/${entry.id}"
-							data-toggle="tooltip" data-placement="top" title="Edit entry">
-								<button type="button" class="btn btn-default btn-sm">
-									<span class="glyphicon glyphicon-edit"></span>
-								</button>
-						</a> <a href="<c:url value='/deleteEntry'/>/${entry.id}"
-							data-toggle="tooltip" data-placement="top" title="Delete entry">
-								<button type="button" class="btn btn-default btn-sm">
-									<span class="glyphicon glyphicon-trash"></span>
-								</button>
-						</a></td>
+						<td>
+							<a href="<c:url value='/viewEntry'/>/${entry.id}"
+								data-toggle="tooltip" data-placement="top" title="View entry"
+								role="button"
+								class="btn btn-default btn-sm glyphicon glyphicon-zoom-in">
+							</a>
+							<a href="<c:url value='/prepareEditEntry'/>/${entry.id}"
+								data-toggle="tooltip" data-placement="top" title="Edit entry"
+								role="button"
+								class="btn btn-default btn-sm glyphicon glyphicon-edit">
+							</a>
+							<a href="<c:url value='/deleteEntry'/>/${entry.id}"
+								data-toggle="tooltip" data-placement="top" title="Delete entry"
+								role="button"
+								class="btn btn-default btn-sm glyphicon glyphicon-trash">
+							</a>
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
