@@ -35,13 +35,13 @@ body {
 				<div class="form-group">
 					<label for="inputTitle" class="control-label col-xs-1">Title</label>
 					<div class="col-xs-5">
-						<input type="text" class="form-control" id="title" name="title" value="${entry.title}"/>
+						<input type="text" class="form-control" maxlength="50" id="title" name="title" value="${entry.title}"/>
 					</div>
 				</div>
 				<div class="form-group">
 					<label for="inputPost" class="control-label col-xs-1">Post</label>
 					<div class="col-xs-10">
-						<textarea class="form-control" rows="8" id="post" name="post">${entry.post}</textarea>
+						<textarea class="form-control" rows="8" id="post" name="post"  maxlength="2000">${entry.post}</textarea>
 					</div>
 				</div>
 				<div class="form-group">
