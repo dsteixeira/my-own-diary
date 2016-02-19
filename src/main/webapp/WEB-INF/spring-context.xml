@@ -38,4 +38,13 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
 		<constructor-arg ref="dataSource" />
 	</bean>
+	
+	<bean
+	  class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+	  <property name="exceptionMappings">
+		<props>
+			<prop key="java.lang.Exception">exception_error</prop>
+		</props>
+	  </property>
+	</bean>
 </beans>
