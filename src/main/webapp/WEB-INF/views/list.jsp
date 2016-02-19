@@ -24,9 +24,11 @@ body {
 	src="https://cdn.datatables.net/t/dt/dt-1.10.11/datatables.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function() {
-		$('#postEntries').DataTable();
-	});
+$(document).ready(function() {
+    $('#postEntries').DataTable({
+        "order": [[ 2, "desc" ]] // order by Post Date (creation)
+    });
+});
 
 	$(document).ready(function() {
 		$('[data-toggle="tooltip"]').tooltip();
