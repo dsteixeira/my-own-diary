@@ -12,7 +12,7 @@ import com.diary.model.DiaryEntry;
 public class DiaryEntryService {
 
 	@Autowired
-	DiaryEntryDAO diaryEntryDAO;
+	private DiaryEntryDAO diaryEntryDAO;
 
 	public List<DiaryEntry> listAll() {
 		return diaryEntryDAO.findAll();

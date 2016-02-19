@@ -8,9 +8,13 @@ public class DiaryEntry implements Serializable {
 	private static final long serialVersionUID = 82077455483358576L;
 
 	private Long id;
+
 	private String title;
+
 	private String post;
+
 	private Date createDate;
+
 	private Date updateDate;
 
 	public Long getId() {
