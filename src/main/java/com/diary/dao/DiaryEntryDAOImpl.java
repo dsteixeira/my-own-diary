@@ -91,7 +91,7 @@ public class DiaryEntryDAOImpl implements DiaryEntryDAO {
 		paramSource.addValue("post", diaryEntry.getPost());
 		paramSource.addValue("title", diaryEntry.getTitle());
 		
-		if (ACTION_INSERT.endsWith(action)) {
+		if (ACTION_INSERT.equals(action)) {
 			paramSource.addValue("create_date", new java.sql.Timestamp(diaryEntry.getCreateDate().getTime()));
 		}
 		
