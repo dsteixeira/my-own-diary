@@ -2,6 +2,8 @@ package com.diary.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +13,8 @@ import com.diary.model.DiaryEntry;
 @Service
 public class DiaryEntryService {
 
+	private static final Logger log = LoggerFactory.getLogger(DiaryEntryService.class);
+
 	@Autowired
 	private DiaryEntryDAO diaryEntryDAO;
 
@@ -19,7 +23,9 @@ public class DiaryEntryService {
 	}
 
 	public void save(DiaryEntry diaryEntry) {
+		log.info("About to save {}", diaryEntry);
 		diaryEntryDAO.save(diaryEntry);
+		log.info("Entry [{}] saved!", diaryEntry.getId());
 	}
 
 	public void delete(Long id) {

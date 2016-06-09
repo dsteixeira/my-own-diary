@@ -30,7 +30,7 @@
 		<ibm.watson.version>3.0.1</ibm.watson.version>
 		<javax.validation.version>1.1.0.Final</javax.validation.version>
 		<hibernate.validator.version> 5.2.3.Final</hibernate.validator.version>
-		
+		<logback.version>1.1.7</logback.version>
 	</properties>
 
 	<dependencies>
@@ -95,6 +95,12 @@
 			<groupId>com.ibm.watson.developer_cloud</groupId>
 			<artifactId>java-sdk</artifactId>
 			<version>${ibm.watson.version}</version>
+		</dependency>
+		<!-- http://mvnrepository.com/artifact/ch.qos.logback/logback-classic -->
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>${logback.version}</version>
 		</dependency>
 	</dependencies>
 </project>
